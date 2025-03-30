@@ -20,8 +20,14 @@ typedef struct {
 
 int main() {
     Classe classeA;
+    char stringa[100];
 
-    strcpy(classeA.nomeClasse, "Classe A");
+    
+
+    printf("Inserisci il nome della classe ");
+    scanf("%s", stringa);
+
+    strcpy(classeA.nomeClasse, stringa);
     classeA.numeroStudenti = 0;
 
     // Aggiunta di Mario
