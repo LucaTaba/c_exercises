@@ -18,9 +18,12 @@ typedef struct {
     int numeroStudenti;
 } Classe;
 
+
+
 int main() {
     Classe classeA;
     char stringa[100];
+    int controllo = 0;
 
     
 
@@ -29,6 +32,23 @@ int main() {
 
     strcpy(classeA.nomeClasse, stringa);
     classeA.numeroStudenti = 0;
+
+    while (controllo == 0){
+        int comando;
+        printf("Inserisci un comando: ");
+        scanf('%d', comando);
+        if (comando == 0){
+            controllo = 1;
+        } else if (comando == 1)
+        {
+            printf("Inserisci il nome del nuovo studente ");
+            scanf("%s", stringa);
+
+            strcpy(classeA.nomeClasse, stringa);
+        }
+        
+
+
 
     // Aggiunta di Mario
     strcpy(classeA.studenti[classeA.numeroStudenti].nome, "Mario");
@@ -67,6 +87,9 @@ int main() {
         }
         printf("\n");
     }
+
+
+} //chiusura graffa while
 
     return 0;
 }
