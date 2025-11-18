@@ -25,6 +25,11 @@ int main() {
         v[i] = atoll(line);
     }
 
+    for (int i = 0; i < 3; i++) {
+        printf("v[%d] = %d\n", i, v[i]);
+    }
+    
+
     return 0;
     
 
