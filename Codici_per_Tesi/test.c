@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <stdint.h>
+#include <stdlib.h> // rand()
+#include <stdint.h> // int64_t
 #include <time.h>
 #include <inttypes.h>
 #include <string.h>
