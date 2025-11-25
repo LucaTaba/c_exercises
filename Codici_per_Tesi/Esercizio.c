@@ -31,10 +31,10 @@ int main() {
     for (int i = 0; i < n; ++i) {
         printf("Valore segreto partecipante %d: ", i+1);
         fgets(line, sizeof(line), stdin);
-        v[i] = atoi(line); 
+        v[i] = atoi(line); //converto in intero
     }
 
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 3; i++) { //stampo i valori inseriti
         printf("v[%d] = %d\n", i, v[i]);
     }
 
@@ -54,15 +54,15 @@ int main() {
 
     // ogni partecipante somma ciò che riceve
     int received_sum[n];
-    for (int j = 0; j < n; ++j) received_sum[j] = 0;
+    for (int j = 0; j < n; ++j) received_sum[j] = 0; // inizializzo a zero
 
-    for (int i = 0; i < n; ++i) {
+    for (int i = 0; i < n; ++i) { 
         for (int j = 0; j < n; ++j) {
             received_sum[j] += shares[i][j];
         }
     }
 
-    printf("Valori sum_j (pubblici):\n");
+    printf("Valori somme (pubblici):\n");
     int final_sum = 0;
     for (int j = 0; j < n; ++j) {
         printf("  sum_%d = %d\n", j + 1, received_sum[j]);
