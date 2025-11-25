@@ -14,6 +14,39 @@ int rand_range(int min, int max) {
     return min + rand() % (max - min + 1);
 }
 
+//----------------------------------------------------------------
+
+// funzione crittografia
+
+
+// funzione di criptazione
+int encrypt(int v, int key, int modulo) {
+    return (v + key) % modulo;
+}
+
+int decrypt(int encrypted, int key, int modulo) {
+    int r = (encrypted - key) % modulo;
+    if (r > modulo/2)
+        return r - modulo;   // converte i rappresentanti alti in negativi
+    return r;
+}
+
+int cripta(int v, int key, int modulo) {
+    return encrypt(v, key, modulo);
+}
+
+// r = (encrypted_sum - (total_shares * key)) mod mod
+int decrypt_total(int encrypted_sum, int key, int total_shares, int mod) {
+    int sub = (total_shares * key) % mod;    // evita numeri grandi, lo riduciamo subito
+    int r = (encrypted_sum - sub) % mod;
+    if (r < 0) r += mod;
+    return r;
+}
+
+
+
+
+//----------------------------------------------------------------
 
 int main() {
   
@@ -21,6 +54,10 @@ int main() {
     int n = 3;
     int v[n];
     char line[256];
+
+    // parametri della "crittografia"
+    int key = 1234;
+    int modulo = 9973; // numero primo consigliato
 
     srand(time(NULL));
 
@@ -52,14 +89,31 @@ int main() {
         shares[i][n-1] = v[i] - sum; // calcolo l'ultimo share in modo che la somma sia v[i]
     }
 
+    // ogni partecipante cripta i propri share
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < n; ++j) {
+            int encrypted_share = cripta(shares[i][j], key, modulo);
+            shares[i][j] = encrypted_share;
+        }
+    }
     // ogni partecipante somma ciò che riceve
     int received_sum[n];
     for (int j = 0; j < n; ++j) received_sum[j] = 0; // inizializzo a zero
 
+    int somma_tutti = 0;
     for (int i = 0; i < n; ++i) { 
         for (int j = 0; j < n; ++j) {
-            printf("Partecipante %d invia share %d = %d\n", i+1, j+1, shares[i][j]);
-            received_sum[j] += shares[i][j];
+            somma_tutti += shares[i][j];
+        }
+    }
+
+    for (int i = 0; i < n; ++i) { 
+        for (int j = 0; j < n; ++j) {
+            printf("Partecipante %d invia share %d = %d\n", i, j, shares[i][j]);
+            int decrypted_share = decrypt(shares[i][j], key, modulo);
+            printf("  -> decriptato = %d\n", decrypted_share);
+            received_sum[j] += decrypted_share;
+
         }
     }
 
@@ -71,6 +125,9 @@ int main() {
     }
 
     printf("\nSomma totale ottenuta = %d\n", final_sum);
+    printf("somma_tutti calcolata = %d\n", somma_tutti);
+    int decrypted_total = decrypt_total(somma_tutti, key, n*n, modulo);
+    printf("Somma totale decriptata = %d\n", decrypted_total);
 
     return 0;
 
