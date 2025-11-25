@@ -58,6 +58,7 @@ int main() {
 
     for (int i = 0; i < n; ++i) { 
         for (int j = 0; j < n; ++j) {
+            printf("Partecipante %d invia share %d = %d\n", i+1, j+1, shares[i][j]);
             received_sum[j] += shares[i][j];
         }
     }
@@ -72,9 +73,6 @@ int main() {
     printf("\nSomma totale ottenuta = %d\n", final_sum);
 
     return 0;
-    
-
-
 
 }
 
