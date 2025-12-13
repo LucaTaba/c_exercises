@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/tabar/OneDrive/Desktop/GitHub/c_exercises/little_o_big_endian",
-      "program": "c:/Users/tabar/OneDrive/Desktop/GitHub/c_exercises/little_o_big_endian/build/Debug/outDebug",
+      "cwd": "c:/Users/tabar/OneDrive/Desktop/GitHub/c_exercises/Codici_per_Tesi",
+      "program": "c:/Users/tabar/OneDrive/Desktop/GitHub/c_exercises/Codici_per_Tesi/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
