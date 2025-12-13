@@ -74,9 +74,6 @@ int main() {
     for (int i = 0; i < 3; i++) { //stampo i valori inseriti
         printf("v[%d] = %d\n", i, v[i]);
     }
-//aggiunta per test
-
-
 
     int shares[n][n];
     memset(shares, 0, sizeof(shares)); //inizializza a zero
