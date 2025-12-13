@@ -78,6 +78,7 @@ int main() {
     int shares[n][n];
     memset(shares, 0, sizeof(shares)); //inizializza a zero
 
+    
     // faccio piu somme consegcutive prendendo un valore casuale ogni volta da ciascuno
     for (int i = 0; i < n; ++i) {
         int sum = 0;
