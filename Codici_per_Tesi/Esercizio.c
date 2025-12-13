@@ -13,7 +13,7 @@
 int rand_range(int min, int max) {
     return min + rand() % (max - min + 1);
 }
-
+//commento di prova
 //----------------------------------------------------------------
 
 // funzione crittografia
