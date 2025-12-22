@@ -25,3 +25,4 @@ c_tot = c1 + c2 + c3
 totale = private_key.decrypt(c_tot)
 
 print("Totale:", totale)
+  
