@@ -13,7 +13,7 @@
 int rand_range(int min, int max) {
     return min + rand() % (max - min + 1);
 }
-//commento di prova
+
 //----------------------------------------------------------------
 
 // funzione crittografia
@@ -74,13 +74,11 @@ int main() {
     for (int i = 0; i < 3; i++) { //stampo i valori inseriti
         printf("v[%d] = %d\n", i, v[i]);
     }
-//aggiunta per test
-
-
 
     int shares[n][n];
     memset(shares, 0, sizeof(shares)); //inizializza a zero
 
+    
     // faccio piu somme consegcutive prendendo un valore casuale ogni volta da ciascuno
     for (int i = 0; i < n; ++i) {
         int sum = 0;
